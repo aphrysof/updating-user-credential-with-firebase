@@ -1,0 +1,15 @@
+.login_button {
+  max-width: 250px;
+  margin: 150px auto;
+}
+button {
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+    border: 1px solid rebeccapurple;
+    color: white;
+    background-color: rebeccapurple;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
