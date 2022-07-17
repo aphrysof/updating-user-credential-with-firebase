@@ -1,0 +1,36 @@
+.profile_button {
+    margin: 10px;
+    width: 100px;
+    font-size: 16px;
+}
+.profile_card {
+    border: 1px solid black;
+    border-radius: 5px;
+    max-width: 400px;
+    width: 350px;
+    margin: 100px auto;
+   
+}
+.profile_details {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 10px;
+}
+.profile_details img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;  
+}
+.profile_details ul {
+    list-style: none;
+    
+}
+.profile_details li {
+    margin: 10px  0;
+}
+.update_button {
+    width: 150px;
+    font-size: 16px;
+}

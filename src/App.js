@@ -1,8 +1,10 @@
 import { Login, Home, Profile, PrivateRoute } from "./routes";
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/context";
+import "./index.css";
 
 function App() {
+  
   return (
     <AuthProvider>
       <Routes>

@@ -9,6 +9,7 @@ const AuthContext = createContext({
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+  const [userDetails, setUserDetails] = useState([])
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -21,11 +22,23 @@ const AuthProvider = ({ children }) => {
     });
   }, []);
 
+  useEffect(() => {
+    if(user) {
+      const userData = user.providerData;
+      setUserDetails(userData);
+      console.log(userData);
+    }else {
+      setUserDetails([]);
+    }
+  }, [user])
+
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        userDetails,
+        setUserDetails
       }}
     >
       {children}
