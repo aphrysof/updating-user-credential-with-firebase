@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
+  deleteUser,
 } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,42 +26,29 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
-//SignInWithGoogle function
 
+//SignInWithGoogle function
 export const SignInWithGoogle = () => {
   signInWithPopup(auth, provider)
     .then((result) => {
-     console.log(result.user);
+      console.log(result.user);
     })
     .catch((err) => {
       console.log(err.message);
     });
 };
-//Sign OUt
 
+//Sign Out Function
 export const SignOut = () => {
   signOut(auth)
     .then(() => {
-      console.log('logged out')
+      console.log("logged out");
     })
     .catch((error) => {
       console.log(error);
     });
 };
-//onAuthStateChanged is an observable that gets called whenever a user state changes
-// onAuthStateChanged(auth, (user) => {
-// if (user) {
-//   // User is signed in, see docs for a list of available properties
-//   // https://firebase.google.com/docs/reference/js/firebase.User
-//   const uid = user.uid;
-//   // ...
-// } else {
-//   // User is signed out
-//   // ...
-//   // }
-//   if (user) {
-//     console.log(user);
-//   } else {
-//     console.log("still null");
-//   }
-// });
+
+
+
+

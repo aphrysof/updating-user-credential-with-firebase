@@ -1,44 +1,55 @@
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, updateEmail, updateProfile } from "firebase/auth";
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
 
-//create the global state
+//create the global state AuthContext
 const AuthContext = createContext({
   user: null,
 });
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
-  const [userDetails, setUserDetails] = useState([])
+  const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
+    // Use onAuthStateChanged as an observable to check the state of the user
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        setUserDetails(user);
         console.log(user);
       } else {
         setUser(null);
+        setUserDetails([]);
       }
     });
   }, []);
 
-  useEffect(() => {
-    if(user) {
-      const userData = user.providerData;
-      setUserDetails(userData);
-      console.log(userData);
-    }else {
-      setUserDetails([]);
-    }
-  }, [user])
-
+  //updating the Username
+  const updateDisplayName = (displayName) => {
+    updateProfile(user, { displayName })
+      .then(() => {
+        console.log("displayName updated");
+      })
+      .catch((err) => console.log(err));
+  };
+  //updating the email
+  const updateUserEmail = (email) => {
+    updateEmail(user, email)
+      .then(() => {
+        console.log("email updated");
+      })
+      .catch((err) => console.log(err.message));
+  };
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
         userDetails,
-        setUserDetails
+        setUserDetails,
+        updateDisplayName,
+        updateUserEmail,
       }}
     >
       {children}

@@ -3,6 +3,10 @@
     width: 100px;
     font-size: 16px;
 }
+.header_buttons {
+    display: flex;
+    justify-content: space-between;
+}
 .profile_card {
     border: 1px solid black;
     border-radius: 5px;
